@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CSV ⇄ Markdown</title>
+<meta name="description" content="Convert CSV to a Markdown table and back, without losing anything.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app">
+    <header class="head">
+      <h1 class="head__title">CSV ⇄ Markdown</h1>
+      <p class="head__sub">Paste either side. Quoted commas, pipes, newlines and
+        wide characters all survive the round trip.</p>
+    </header>
+
+    <div class="panes">
+      <section class="pane">
+        <div class="pane__head">
+          <label class="pane__label" for="left">CSV</label>
+          <span class="pane__meta" id="leftmeta"></span>
+        </div>
+        <textarea id="left" class="pane__box" spellcheck="false"
+          placeholder="name,note&#10;Doe, Jane,&quot;has a comma&quot;"></textarea>
+        <div class="pane__foot">
+          <button class="btn" id="copyleft" type="button">Copy CSV</button>
+          <button class="btn btn--quiet" id="sample" type="button">Load an awkward sample</button>
+        </div>
+      </section>
+
+      <div class="arrows" aria-hidden="true">⇄</div>
+
+      <section class="pane">
+        <div class="pane__head">
+          <label class="pane__label" for="right">Markdown</label>
+          <span class="pane__meta" id="rightmeta"></span>
+        </div>
+        <textarea id="right" class="pane__box" spellcheck="false"
+          placeholder="| name | note |&#10;| --- | --- |"></textarea>
+        <div class="pane__foot">
+          <button class="btn" id="copyright" type="button">Copy Markdown</button>
+          <label class="check">
+            <input type="checkbox" id="align" checked>
+            <span>Align columns</span>
+          </label>
+        </div>
+      </section>
+    </div>
+
+    <p class="status" id="status" role="status" aria-live="polite"></p>
+  </main>
+
+  <script type="module" src="src/app.js"></script>
+</body>
+</html>
